@@ -25,7 +25,7 @@ public class CreateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         throw new ServletException(this.getServletName() + " does not support GET");
     }
 
@@ -35,37 +35,31 @@ public class CreateServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String queryCheck = "SELECT * FROM Student WHERE username = ? COLLATE Latin1_General_CS_AS";
+        String queryCheck = "SELECT * FROM Student WHERE name = ? COLLATE Latin1_General_CS_AS";
 
         try (
             Connection connection = DBUtils.getConnection();
+            PreparedStatement statement = connection.prepareStatement(queryCheck,
+                    ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         ) {
             connection.setTransactionIsolation(Connection.TRANSACTION_REPEATABLE_READ);
+            statement.setString(1, username);
+            ResultSet results = statement.executeQuery();
 
-            try (
-                PreparedStatement statement = connection.prepareStatement(queryCheck,
-                        ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-            ) {
-                statement.setString(1, username);
-                ResultSet results = statement.executeQuery();
-
-                if (results.next() && !results.isLast()) {
-                    throw new SQLException("Username exists");
-                }
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-                request.setAttribute("status", "failed");
-                request.getRequestDispatcher("create_status.jsp").forward(request, response);
-                return;
+            if (results.next() && !results.isLast()) {
+                request.setAttribute("status", "exist");
+                throw new SQLException("Username exists");
             }
         } catch (Exception e) {
-            System.err.println(e.getMessage());
-            request.setAttribute("status", "failed");
+            if (request.getAttribute("status") == null) {
+                request.setAttribute("status", "failed");
+            }
+
             request.getRequestDispatcher("create_status.jsp").forward(request, response);
             return;
         }
 
-        String queryInsert = "INSERT INTO Student(username, password) VALUES (?, ?)";
+        String queryInsert = "INSERT INTO Student(name, password) VALUES (?, ?)";
 
         try (
                 Connection connection = DBUtils.getConnection();
@@ -85,18 +79,18 @@ public class CreateServlet extends HttpServlet {
 
                 connection.commit();
             } catch (Exception e) {
-                System.err.println(e.getMessage());
                 connection.rollback();
                 request.setAttribute("status", "failed");
-                request.getRequestDispatcher("create_status.jsp").forward(request, response);
             }
         } catch (Exception e) {
             System.err.println(e.getMessage());
             request.setAttribute("status", "failed");
-            request.getRequestDispatcher("create_status.jsp").forward(request, response);
         }
 
-        request.setAttribute("status", "successful");
+        if (request.getAttribute("status") == null) {
+            request.setAttribute("status", "successful");
+        }
+
         request.getRequestDispatcher("create_status.jsp").forward(request, response);
     }
 }

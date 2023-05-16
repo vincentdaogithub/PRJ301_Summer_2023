@@ -18,12 +18,12 @@
         <hr />
 
         <form action="CreateServlet" method="post">
-            <label for="username">Username: </label>
-            <input id="username" type="text" name="username" placeholder="name here..." />
+            <label for="name">Username: </label>
+            <input id="name" type="text" name="txtName" placeholder="name here..." />
             <br />
 
-            <label for="password">Password: </label>
-            <input id="password" type="password" name="password" placeholder="pass here..." />
+            <label for="pass">Password: </label>
+            <input id="pass" type="password" name="txtPass" placeholder="pass here..." />
             <br />
 
             <input type="submit" value="Create" />

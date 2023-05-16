@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,7 +15,17 @@
         <title>Create status</title>
     </head>
     <body>
-        <h1>Create ${requestScope.status}</h1>
+        <c:choose>
+            <c:when test="${status == 'exist'}">
+                <h1>User exists</h1>
+            </c:when>
+
+            <c:otherwise>
+                <h1>Create ${requestScope.status}</h1>
+            </c:otherwise>
+        </c:choose>
+        <hr />
+        
         <a href="index.jsp">Back</a>
     </body>
 </html>

@@ -12,17 +12,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Login</title>
     </head>
+
     <body>
         <h1>Login</h1>
         <hr />
 
         <form action="/Demo/LoginServlet" method="post">
-            <label for="username">Username: </label>
-            <input id="username" type="text" name="txtName" placeholder="name here..." required />
+            <label for="name">Username: </label>
+            <input id="name" type="text" name="txtName" placeholder="name here..." required />
             <br />
 
-            <label for="password">Password: </label>
-            <input id="password" type="password" name="txtPass" placeholder="pass here..." required />
+            <label for="pass">Password: </label>
+            <input id="pass" type="password" name="txtPass" placeholder="pass here..." required />
             <br />
 
             <input type="submit" value="Login" />

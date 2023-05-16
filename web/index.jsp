@@ -17,6 +17,9 @@
         <h1>Hello World!</h1>
         <hr />
 
+        <a href="create.jsp">Create</a>
+        <br />
+        
         <a href="lab1/lab1.jsp">Exercise 1 (LAB 1)</a>
         <br />
     </body>
