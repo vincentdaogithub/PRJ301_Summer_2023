@@ -33,8 +33,15 @@ public class CreateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("txtName");
+        String password = request.getParameter("txtPass");
+
+        if (username.isEmpty() || password.isEmpty()) {
+            request.setAttribute("status", "failed");
+            request.getRequestDispatcher("create_status.jsp").forward(request, response);
+            return;
+        }
+
         String queryCheck = "SELECT * FROM Student WHERE name = ? COLLATE Latin1_General_CS_AS";
 
         try (
@@ -46,7 +53,7 @@ public class CreateServlet extends HttpServlet {
             statement.setString(1, username);
             ResultSet results = statement.executeQuery();
 
-            if (results.next() && !results.isLast()) {
+            if (results.next()) {
                 request.setAttribute("status", "exist");
                 throw new SQLException("Username exists");
             }
