@@ -1,4 +1,4 @@
-package controllers;
+package business;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package business;
 
 import java.io.IOException;
 import java.sql.Connection;
