@@ -1,0 +1,199 @@
+html {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: monospace;
+
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    top: 0;
+}
+
+.bg {
+    width: 100%;
+    position: fixed;
+    z-index: -9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bg > img {
+    width: 100%;
+    height: auto;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 40%;
+    border-radius: 1rem;
+    background-color: #ffffff83;
+}
+
+.login-container > * {
+    width: 50%;
+    margin: 1rem 0;
+}
+
+.login-container > h2 {
+    font-size: 2rem;
+}
+
+.login-container > p {
+    font-size: 1.5rem;
+}
+
+.login-container > h2,
+.login-container > p {
+    text-align: center;
+}
+
+.login-container > form > * {
+    margin: 1rem 0;
+}
+
+.input {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.input > input {
+    font-size: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 1rem;
+}
+
+.input > label {
+    font-size: 1.5rem;
+}
+
+.login-container > form > input[type="submit"] {
+    width: 100%;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.sign-up {
+    font-size: 1.5rem;
+}
+
+.scr-reader {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    top: auto;
+    overflow: hidden;
+}
+
+.admin-container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    
+    width: 80%;
+    background-color: #ffffff83;
+    border-radius: 1rem;
+}
+
+.admin-container > * {
+    margin: 1rem 0;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.search-container > form {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.search-container > form > .input {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.search-container > form > .input > * {
+    width: 50%;
+    margin: 0 1rem;
+}
+
+.user-table {
+    width: 80%;
+}
+
+.user-table > * {
+    margin: 0.5rem 0;
+}
+
+.user-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.user-container > * {
+    width: calc(100% / 6);
+}
+
+.logo {
+    display: block;
+    width: auto;
+    height: 30vh;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.error {
+    font-size: 1.5rem;
+    color: purple;
+}
