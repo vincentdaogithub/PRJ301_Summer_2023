@@ -7,6 +7,7 @@
     <filter-mapping>
         <filter-name>AdminFilter</filter-name>
         <url-pattern>/admin.jsp</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
     <servlet>
         <servlet-name>CreateServlet</servlet-name>
@@ -24,6 +25,10 @@
         <servlet-name>Controller</servlet-name>
         <servlet-class>controllers.Controller</servlet-class>
     </servlet>
+<!--    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+        <servlet-class>business.AdminServlet</servlet-class>
+    </servlet>-->
     <servlet-mapping>
         <servlet-name>CreateServlet</servlet-name>
         <url-pattern>/CreateServlet</url-pattern>
@@ -40,6 +45,10 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/c/*</url-pattern>
     </servlet-mapping>
+<!--    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/admin.jsp</url-pattern>
+    </servlet-mapping>-->
     <session-config>
         <session-timeout>
             30

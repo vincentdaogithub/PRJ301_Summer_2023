@@ -28,7 +28,7 @@
 
             <div class="table">
                 <c:choose>
-                    <c:when test="${users != null}">
+                    <c:when test="${not empty users}">
                         <c:forEach items="${users}" var="userObj">
                             <div>
                                 <p>User ID: ${f:escapeXml(userObj.roleID)}</p>

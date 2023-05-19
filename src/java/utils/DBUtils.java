@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBUtils {
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        String url = "jdbc:sqlserver://localhost:1433;databaseName=Management;user=sa;password=12345";
+        String url = "jdbc:sqlserver://localhost:1433;databaseName=Application;user=sa;password=12345";
         return DriverManager.getConnection(url);
     }
 }

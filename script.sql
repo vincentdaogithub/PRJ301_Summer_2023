@@ -1,14 +1,14 @@
 USE master
 GO
 
-IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Management')
-    DROP DATABASE Management;
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Application')
+    DROP DATABASE Application;
 GO
 
-CREATE DATABASE Management
+CREATE DATABASE Application
 GO
 
-USE Management
+USE Application
 GO
 
 CREATE TABLE [User] (
